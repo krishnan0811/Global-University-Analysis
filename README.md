@@ -59,37 +59,9 @@ The dataset contains information about top universities including:
 
 ---
 
-##  How to Run
+##  Live Link
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/university-dashboard.git
-```
-
-2. Navigate to the project folder:
-
-```bash
-cd university-dashboard
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Run the app:
-
-```bash
-streamlit run app.py
-```
-
----
-
-##  Dashboard Preview
-
-(Add your screenshots here)
+link: https://global-university-analysis.streamlit.app/
 
 ---
 
