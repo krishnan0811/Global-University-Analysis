@@ -22,26 +22,19 @@ st.markdown("## Global University Analysis Dashboard")
 # LOAD DATA
 df = pd.read_csv("top_100_universities_dataset.csv")
 
-# Clean columns
+# CLEAN COLUMNS
+
 df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-
-# KPIs
-col1, col2, col3 = st.columns(3)
-
-col1.metric("Total Universities", len(df))
-col2.metric("Avg Students", int(df['total_students'].mean()))
-col3.metric("Total Locations", df['location'].nunique())
-
-st.markdown("---")
 
 # SIDEBAR FILTERS
 
-st.sidebar.header("Filters")
+st.sidebar.header(" Filters")
 
 location = st.sidebar.selectbox("Select Location", ["All"] + list(df['location'].unique()))
 uni_type = st.sidebar.selectbox("University Type", ["All"] + list(df['university_type'].unique()))
 
-# Apply filters
+# APPLY FILTERS FIRST 
+
 filtered_df = df.copy()
 
 if location != "All":
@@ -49,6 +42,23 @@ if location != "All":
 
 if uni_type != "All":
     filtered_df = filtered_df[filtered_df['university_type'] == uni_type]
+
+# KPI COLUMNS
+col1, col2, col3 = st.columns(3)
+
+# KPIs 
+
+col1.metric(" Total Universities", len(filtered_df))
+
+col2.metric(
+    "Avg Students",
+    int(filtered_df['total_students'].mean()) if not filtered_df.empty else 0
+)
+
+col3.metric(
+    " Locations",
+    filtered_df['location'].nunique()
+)
 
 # ROW 1
 
